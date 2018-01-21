@@ -3,7 +3,7 @@
 Mule CE is an open source integration tool. Mule CE applications are normally run inside a Mule runtime. 
 With mule-spring-boot-starter, you can run Mule CE embedded in a Spring Boot application. This allows Mule 
 developers to quickly prototype and/or deploy Mule applications with having to download Mule runtime, create 
-a Maven artifact and push the artifact to the Mule runtime. This project will allow developers to build the 
+A Maven artifact and push the artifact to the Mule runtime. This project will allow developers to build the 
 Mule application in much the same manner as other Spring Boot applications. 
 
 ## Maven Dependency:
