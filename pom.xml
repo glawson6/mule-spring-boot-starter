@@ -5,7 +5,7 @@
 
     <groupId>net.taptech</groupId>
     <artifactId>mule-spring-boot-starter</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>Mule Spring Boot Starter</name>
     <parent>
@@ -20,12 +20,25 @@
         <mule.version>3.9.0</mule.version>
         <mule.tools.version>1.2</mule.tools.version>
         <spring.boot.version>1.5.9.RELEASE</spring.boot.version>
-        <jackson-annotations-version>2.6.0</jackson-annotations-version>
-        <joda-time-version>2.9.1</joda-time-version>
-        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
-        <flyway-maven-plugin.version>3.2.1</flyway-maven-plugin.version>
-        <dockerfile-maven-version>1.3.6</dockerfile-maven-version>
     </properties>
+
+    <developers>
+        <developer>
+            <email>glawson6@gmail.com</email>
+            <name>Gregory Lawson</name>
+            <url>https://github.com/glawson6</url>
+            <id>glawson6</id>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <build>
         <plugins>
             <plugin>
@@ -123,6 +136,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -137,6 +151,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
@@ -226,19 +241,6 @@
             <artifactId>hibernate-validator</artifactId>
         </dependency>
 
-
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>${joda-time-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-joda</artifactId>
-            <version>2.4.4</version>
-        </dependency>
-
-        <!-- Xml configuration -->
         <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-spring-config</artifactId>
@@ -337,12 +339,6 @@
             <layout>default</layout>
         </repository>
         <repository>
-            <id>http://repo.spring.io/snapshot</id>
-            <name>Spring Snapshots Repository</name>
-            <url>http://repo.spring.io/milestone</url>
-            <layout>default</layout>
-        </repository>
-        <repository>
             <id>spock-snapshots</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
             <snapshots>
@@ -371,6 +367,5 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-
 
 </project>

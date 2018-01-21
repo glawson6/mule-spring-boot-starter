@@ -1,3 +1,11 @@
 .idea/
 *.iml
 target/
+
+mule-spring-boot-starter.ipr
+mule-spring-boot-starter.iws
+
+dev-notes.txt
+sample-readme.md
+
+pom.xml.versionsBackup

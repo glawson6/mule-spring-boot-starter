@@ -1,0 +1,5 @@
+
+# Export for GPG error on running build.
+# gpg: signing failed: Inappropriate ioctl for device
+# export GPG_TTY=$(tty)
+https://github.com/keybase/keybase-issues/issues/2798
