@@ -18,40 +18,41 @@ To get started simply include the dependency in your pom file:
 
 ## Add repositories:
 ```
-<repositories>
-		<repository>
-			<id>Central</id>
-			<name>Central</name>
-			<url>http://repo1.maven.org/maven2/</url>
-			<layout>default</layout>
-		</repository>
-		<repository>
-			<id>mulesoft-releases</id>
-			<name>MuleSoft Repository</name>
-			<url>http://repository.mulesoft.org/releases/</url>
-			<layout>default</layout>
-		</repository>
-		<repository>
-			<id>mulesoft-snapshots</id>
-			<name>MuleSoft Snapshot Repository</name>
-			<url>http://repository.mulesoft.org/snapshots/</url>
-			<layout>default</layout>
-		</repository>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones Repository</name>
-			<url>http://repo.spring.io/milestone</url>
-			<layout>default</layout>
-		</repository>
-		<repository>
-			<id>spock-snapshots</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
 
-	</repositories>
+		<repositories>
+        		<repository>
+        			<id>Central</id>
+        			<name>Central</name>
+        			<url>http://repo1.maven.org/maven2/</url>
+        			<layout>default</layout>
+        		</repository>
+        		<repository>
+        			<id>mulesoft-releases</id>
+        			<name>MuleSoft Repository</name>
+        			<url>http://repository.mulesoft.org/releases/</url>
+        			<layout>default</layout>
+        		</repository>
+        		<repository>
+        			<id>mulesoft-snapshots</id>
+        			<name>MuleSoft Snapshot Repository</name>
+        			<url>http://repository.mulesoft.org/snapshots/</url>
+        			<layout>default</layout>
+        		</repository>
+        		<repository>
+        			<id>spring-milestones</id>
+        			<name>Spring Milestones Repository</name>
+        			<url>http://repo.spring.io/milestone</url>
+        			<layout>default</layout>
+        		</repository>
+        		<repository>
+        			<id>spock-snapshots</id>
+        			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        			<snapshots>
+        				<enabled>true</enabled>
+        			</snapshots>
+        		</repository>
+        
+        </repositories>
 
 ```
 ## Add mule modules and dependencies as needed.
