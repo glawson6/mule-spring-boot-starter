@@ -53,10 +53,6 @@ public class MuleContextStartupConfiguration {
     @Value("${mule.config.files}")
     String muleConfigFiles;
 
-    //@Autowired
-    //CustomAuthenticationProvider customAuthenticationProvider;
-
-
     @Bean
     public UserTransaction userTransaction() throws Throwable {
         UserTransactionImp userTransactionImp = new UserTransactionImp();
@@ -77,12 +73,6 @@ public class MuleContextStartupConfiguration {
         return new JtaTransactionManager(
                 userTransaction,transactionManager);
     }
-    /*
-    @Bean
-    public PlatformTransactionManager platformTransactionManager(){
-        return new JtaTransactionManager();
-    }
-    */
 
     @Bean
     public TransactionManagerFactory transactionManagerFactory(PlatformTransactionManager platformTransactionManager){
