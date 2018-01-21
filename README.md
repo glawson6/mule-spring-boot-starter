@@ -69,7 +69,7 @@ Ex.
 
 ## Create a mule config file:
 Make sure this file is in the artifact classpath. Create an application property called
-mule.config.files. Add a comma seperated list of mule config files.
+mule.config.files. Add a comma separated list of mule config files.
 ```
 mule.config.files=mule-config.xml
 ```
