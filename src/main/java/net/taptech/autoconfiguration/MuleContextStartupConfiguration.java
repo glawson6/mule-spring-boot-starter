@@ -7,6 +7,7 @@ import org.mule.api.context.MuleContextBuilder;
 import org.mule.api.context.MuleContextFactory;
 import org.mule.api.transaction.TransactionManagerFactory;
 import org.mule.client.DefaultLocalMuleClient;
+import org.mule.config.ConfigResource;
 import org.mule.config.spring.SpringXmlConfigurationBuilder;
 import org.mule.context.DefaultMuleContextBuilder;
 import org.mule.context.DefaultMuleContextFactory;
@@ -19,6 +20,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
 import javax.annotation.PostConstruct;
@@ -34,6 +36,8 @@ import org.mule.module.spring.transaction.SpringTransactionManagerFactory;
 
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.jta.JtaTransactionManager;
+
+import java.io.IOException;
 
 /**
  * Created by tap on 10/30/16.
@@ -97,12 +101,31 @@ public class MuleContextStartupConfiguration {
         MuleContextFactory muleContextFactory = new DefaultMuleContextFactory();
         logger.info("Loading Mule config files {}",muleConfigFiles);
         String [] configFiles = muleConfigFiles.split(",");
-        SpringXmlConfigurationBuilder  builder = new SpringXmlConfigurationBuilder(configFiles);
+        ConfigResource configs[] = createConfigResources(muleConfigFiles);
+        //SpringXmlConfigurationBuilder  builder = new SpringXmlConfigurationBuilder(configFiles);
+        SpringXmlConfigurationBuilder  builder = new SpringXmlConfigurationBuilder(configs);
         builder.setParentContext(context);
         MuleContextBuilder contextBuilder = new DefaultMuleContextBuilder();
         MuleContext context = muleContextFactory.createMuleContext(builder, contextBuilder);
         logger.info("Created MuleContext");
         return context;
+    }
+
+    private ConfigResource[] createConfigResources(String muleConfigFiles) {
+        String [] configFiles = muleConfigFiles.split(",");
+        ConfigResource configs[] = new ConfigResource[configFiles.length];
+        for (int i = 0; i < configFiles.length; i++){
+            String configFile = configFiles[i];
+            logger.debug("Loading config file {}",configFile);
+            Resource resource = resourceLoader.getResource(configFile);
+            try {
+                configs[i] = new ConfigResource(resource.getURL());
+            } catch (IOException e) {
+                logger.error("Unable to load configuration {} ",configFile,e);
+            }
+        }
+
+        return configs;
     }
 
     @Configuration
