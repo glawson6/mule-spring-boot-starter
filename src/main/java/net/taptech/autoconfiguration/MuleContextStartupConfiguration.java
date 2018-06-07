@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -55,16 +56,25 @@ public class MuleContextStartupConfiguration {
 
     @Bean
     public UserTransaction userTransaction() throws Throwable {
+        logger.info("Creating UserTransaction");
         UserTransactionImp userTransactionImp = new UserTransactionImp();
         userTransactionImp.setTransactionTimeout(1000);
         return userTransactionImp;
     }
 
-    @Bean(initMethod = "init", destroyMethod = "close")
-    public TransactionManager transactionManager() throws Throwable {
-        UserTransactionManager userTransactionManager = new UserTransactionManager();
-        userTransactionManager.setForceShutdown(false);
-        return userTransactionManager;
+
+
+    @Configuration
+    @ConditionalOnClass(TransactionManager.class)
+    public static class TransactionManagerConfig{
+        @Bean(initMethod = "init", destroyMethod = "close")
+        public TransactionManager transactionManager() throws Throwable {
+
+            logger.info("Creating TransactionManager");
+            UserTransactionManager userTransactionManager = new UserTransactionManager();
+            userTransactionManager.setForceShutdown(false);
+            return userTransactionManager;
+        }
     }
 
 

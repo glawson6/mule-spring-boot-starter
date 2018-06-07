@@ -5,13 +5,13 @@
 
     <groupId>net.taptech</groupId>
     <artifactId>mule-spring-boot-starter</artifactId>
-    <version>1.0.0</version>
+    <version>SNAPSHOT-1.2.0</version>
     <packaging>jar</packaging>
     <name>Mule Spring Boot Starter</name>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.9.RELEASE</version>
+        <version>1.5.10.RELEASE</version>
     </parent>
 
     <properties>
@@ -19,7 +19,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <mule.version>3.9.0</mule.version>
         <mule.tools.version>1.2</mule.tools.version>
-        <spring.boot.version>1.5.9.RELEASE</spring.boot.version>
+        <spring.boot.version>1.5.10.RELEASE</spring.boot.version>
     </properties>
 
     <developers>
