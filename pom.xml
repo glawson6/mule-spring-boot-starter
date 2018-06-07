@@ -5,7 +5,7 @@
 
     <groupId>net.taptech</groupId>
     <artifactId>mule-spring-boot-starter</artifactId>
-    <version>SNAPSHOT-1.2.0</version>
+    <version>1.2.0</version>
     <packaging>jar</packaging>
     <name>Mule Spring Boot Starter</name>
     <parent>

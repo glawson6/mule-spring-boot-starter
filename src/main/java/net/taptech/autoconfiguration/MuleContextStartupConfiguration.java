@@ -16,6 +16,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -69,10 +71,9 @@ public class MuleContextStartupConfiguration {
 
 
     @Configuration
-    @ConditionalOnClass(TransactionManager.class)
     public static class TransactionManagerConfig{
         @Bean(initMethod = "init", destroyMethod = "close")
-        public TransactionManager transactionManager() throws Throwable {
+        public TransactionManager transactionManagerJTA() throws Throwable {
 
             logger.info("Creating TransactionManager");
             UserTransactionManager userTransactionManager = new UserTransactionManager();
@@ -84,12 +85,15 @@ public class MuleContextStartupConfiguration {
 
     @Bean
     public PlatformTransactionManager platformTransactionManager(UserTransaction userTransaction, TransactionManager transactionManager)  throws Throwable {
+
+        logger.info("Creating PlatformTransactionManager");
         return new JtaTransactionManager(
                 userTransaction,transactionManager);
     }
 
     @Bean
     public TransactionManagerFactory transactionManagerFactory(PlatformTransactionManager platformTransactionManager){
+        logger.info("Creating TransactionManagerFactory");
         SpringTransactionFactory factory = new SpringTransactionFactory();
         factory.setManager(platformTransactionManager);
         SpringTransactionManagerFactory managerFactory = new SpringTransactionManagerFactory();
